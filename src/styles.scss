@@ -1,13 +1,14 @@
-@use './config-scss/variables.scss';
-@use './config-scss/reset.scss';
-@use './config-scss/rem-calc.scss';
+//nas proximas versoes o use e forward
+@import "./config-scss/variables.scss";
+@import "./config-scss/reset.scss";
+@import "./config-scss/rem-calc.scss";
 
-html{
-  font-family: 'Roboto', sans-serif;
+html {
+  font-family: "Roboto", sans-serif;
   background: var(--primary-color);
 }
-main{
-  max-width: rem-calc(600);
-  margin:0 auto;
+main {
+  width: rem-calc(600);
+  margin: 0 auto;
   box-sizing: border-box;
 }
