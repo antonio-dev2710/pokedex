@@ -1,39 +1,22 @@
-<a class="pokemon">
+<ng-template ngFor let-pokemon [ngForOf]="getAllPokemons">
+<a class="pokemon" *ngIf="pokemon.status">
   <section class="pokemon_status">
     <h2>
-      Bulbasaur
+      {{pokemon.name}} {{pokemon.status.id}}
     </h2>
     <ul>
-      <li>
-        grass
+      <li *ngFor="let value of pokemon.status.types">
+        {{value.type.name}}
+
       </li>
-      <li>
-        Poison
-      </li>
+
     </ul>
   </section>
 
   <section class="pokemon_imagem">
-    <img src="assets/pokemon.png" alt="Bulbasaur">
-  </section>
-</a>
-<a class="pokemon">
-  <section class="pokemon_status">
-    <h2>
-      Bulbasaur
-    </h2>
-    <ul>
-      <li>
-        grass
-      </li>
-      <li>
-        Poison
-      </li>
-    </ul>
-  </section>
-
-  <section class="pokemon_imagem">
-    <img src="assets/pokemon.png" alt="Bulbasaur">
+    <!--utilizando data biding passando um objeto-->
+    <img [src]="pokemon.status.sprites.other.dream_world.front_default" [alt]="pokemon.name">
   </section>
 </a>
 
+</ng-template>

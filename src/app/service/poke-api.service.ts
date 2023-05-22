@@ -17,12 +17,14 @@ export class PokeApiService {
   //fica obs oq ta acontecendo na requisição
   public get apiListALLPokemons(): Observable<any> {
     //pipe como se fosse um filtro, vai criar  uma conexao
+    //so passa as urls
     return this.http.get<any>(this.url).pipe(
       //utilizar o tap para separar por etapas
       tap(res => res),
       tap(res => {
         //dentro dos results que estão os pok
         res.results.map((resPokemons: any) => {
+          //quando passa por um array faz um chamado
           this.apiGetPokemons(resPokemons.url).subscribe(
             res => resPokemons.status=res
           )
