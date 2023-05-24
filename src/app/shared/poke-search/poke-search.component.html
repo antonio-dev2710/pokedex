@@ -1,4 +1,5 @@
 <form>
-  <input type="text" placeholder="Buscar Pokemon...">
+  <!--#input é uma referência a esse elemento de entrada de texto específico.-->
+  <input type="text" #input (keyup)="search(input.value)" placeholder="Buscar Pokemon...">
   <img src="assets/icons/search.svg" alt="Buscar Pokemon">
 </form>

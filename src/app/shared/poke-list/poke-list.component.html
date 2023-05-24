@@ -1,23 +1,28 @@
-<ng-template ngFor let-pokemon [ngForOf]="getAllPokemons">
-  <!--precisa importar o RouterModule-->
-<a  [routerLink]="['details',pokemon.status.id]" class="pokemon" *ngIf="pokemon.status">
-  <section class="pokemon_status">
-    <h2>
-      {{pokemon.name}}
-    </h2>
-    <ul>
-      <li *ngFor="let value of pokemon.status.types">
-        {{value.type.name}}
+<poke-search (emmitSearch)="getSearch($event)"></poke-search>
 
-      </li>
+<section class="listagem">
+  <ng-template ngFor let-pokemon [ngForOf]="getAllPokemons">
+    <!--precisa importar o RouterModule no sharemodule-->
+    <a [routerLink]="['details',pokemon.status.id]" class="pokemon" *ngIf="pokemon.status">
+      <section class="pokemon_status">
+        <h2>
+          {{pokemon.name}}
+        </h2>
+        <ul>
+          <li *ngFor="let value of pokemon.status.types">
+            {{value.type.name}}
 
-    </ul>
-  </section>
+          </li>
 
-  <section class="pokemon_imagem">
-    <!--utilizando data biding passando um objeto-->
-    <img [src]="pokemon.status.sprites.other.dream_world.front_default" [alt]="pokemon.name">
-  </section>
-</a>
+        </ul>
+      </section>
 
-</ng-template>
+      <section class="pokemon_imagem">
+        <!--utilizando data biding passando um objeto-->
+        <img [src]="pokemon.status.sprites.other.dream_world.front_default" [alt]="pokemon.name">
+      </section>
+    </a>
+
+  </ng-template>
+
+</section>
