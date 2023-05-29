@@ -7,19 +7,26 @@ import { PokeApiService } from 'src/app/service/poke-api.service';
   styleUrls: ['./poke-list.component.scss']
 })
 export class PokeListComponent {
-  private setAllPokemons:any
-  public getAllPokemons:any
+  private setAllPokemons:any;
+  public getAllPokemons:any;
+
+  public apiError:boolean=false;
   constructor(private pokeApiService: PokeApiService){
 
   }
 
   ngOnInit(): void{
-     this.pokeApiService.apiListALLPokemons.subscribe(
-      res=> {
+     this.pokeApiService.apiListALLPokemons.subscribe({
+      next:(res) :any=> {
         this.setAllPokemons=res.results
         this.getAllPokemons=this.setAllPokemons;
 
+      },
+      error:(error)=>{
+        this.apiError=true;
       }
+     }
+
     )
   }
   //regastar do emmiter
